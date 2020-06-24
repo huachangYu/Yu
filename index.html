@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Yu</title>
+        <script type="module">
+            import { Yu } from "./js/Yu.js" 
+            console.log('loaded')
+            new Yu({
+                el: '#container',
+                data: {
+                    name: 'yuhuachang'
+                },
+                methods: {},
+            })
+        </script>
+    </head>
+    <body>
+        
+        <div id="container">
+            <input type="text" v-model="name"/>
+            <div>name: {{ name }}</div>
+        </div>
+    </body>
+</html>

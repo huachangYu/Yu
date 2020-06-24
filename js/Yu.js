@@ -74,7 +74,6 @@ class Yu {
                             node.addEventListener('input', (e) => {
                                 const newVal = e.target.value
                                 preVal[key] = newVal
-                                console.log(this.data)
                             })
                             node.value = val
                         }

@@ -42,7 +42,7 @@ class Yu {
         fragment.childNodes.forEach(node => {
             const txt = node.textContent
             const reg = /\{\{(.*?)\}\}/g
-            if ((node.nodeType === 3 || node.nodeType === 1) && reg.test(txt)) {
+            if ((node.nodeType === 3 || node.nodeType === 1) && reg.test(txt)) { // 替换"{{  }}"的文本
                 let val = this.data
                 RegExp.$1.split(".").forEach(keyStr => {
                     keyStr = keyStr.trim()
@@ -68,6 +68,7 @@ class Yu {
                                 preVal = val
                                 val = val[key]
                             })
+                            // 双向绑定
                             this.watchers.push(new Watcher(this.data, exp, (newVal) => {
                                 node.value = newVal
                             }))
@@ -104,7 +105,7 @@ class Yu {
         }
     }
     
-    notify() {
+    notify() { // 发布订阅
         this.watchers.forEach(watcher => watcher.update())
     }
 }

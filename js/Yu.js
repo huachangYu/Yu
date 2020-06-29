@@ -28,8 +28,8 @@ class Yu {
     }
 
     Compile() {
-        let querySelector = document.querySelector(this.el)
-        let fragments = document.createDocumentFragment()
+        const querySelector = document.querySelector(this.el)
+        const fragments = document.createDocumentFragment()
         let child = querySelector.firstChild
         while (child = querySelector.firstChild) {
             fragments.appendChild(child)
@@ -40,7 +40,7 @@ class Yu {
 
     replace(fragment) {
         fragment.childNodes.forEach(node => {
-            let txt = node.textContent
+            const txt = node.textContent
             const reg = /\{\{(.*?)\}\}/g
             if ((node.nodeType === 3 || node.nodeType === 1) && reg.test(txt)) {
                 let val = this.data
@@ -90,7 +90,7 @@ class Yu {
         for (const key in data) {
             let val = data[key]
             this.Observe(val)
-            Reflect.defineProperty(data, key, {
+            Reflect.defineProperty(data, key, {  // 数据劫持
                 configurable: true,
                 get: () => {
                     return val

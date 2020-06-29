@@ -90,7 +90,7 @@ class Yu {
         for (const key in data) {
             let val = data[key]
             this.Observe(val)
-            Object.defineProperty(data, key, {
+            Reflect.defineProperty(data, key, {
                 configurable: true,
                 get: () => {
                     return val
